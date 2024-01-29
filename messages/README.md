@@ -7,31 +7,16 @@ The administrator can register up to 100 eligible users.
 
 Any eligible user can deposit a secret message only once, then he is not eligible anymore.
 
-A message is a field containing:
+A message is a 254 bits field containing:
 
 - Data: a 248 bits segment
 - Flags: a 6 bits segment
 
 ```
- 0                   1                   2                   3
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|                                                               |
-+                                                               +
-|                                                               |
-+                                                               +
-|                                                               |
-+                                                               +
-|                                                               |
-+                          Data - 248                           +
-|                                                               |
-+                                                               +
-|                                                               |
-+                                                               +
-|                                                               |
-+                                               +-+-+-+-+-+-+-+-+
-|                                               | Flags - 6 |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ 0                                                      248     254
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |                          Data                         | Flags |
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
 There's some restrictions on the data and flags fields:
