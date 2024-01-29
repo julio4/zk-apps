@@ -15,7 +15,7 @@ import { MerkleMapMsg } from './MerkleMapMsg';
 const maxAddresses = 100;
 
 /**
- * TODO doc
+ * Main contract for the messages zk-app
  */
 export class MessageContract extends SmartContract {
   @state(PublicKey) admin = State<PublicKey>();
