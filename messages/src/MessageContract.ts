@@ -21,12 +21,14 @@ export class MessageContract extends SmartContract {
   @state(PublicKey) admin = State<PublicKey>();
   @state(Field) root = State<Field>();
   @state(UInt8) eligible_count = State<UInt8>();
+  @state(UInt8) message_received = State<UInt8>();
 
   init() {
     super.init();
     this.admin.set(this.sender);
     this.root.set(new MerkleMapMsg().getRoot());
     this.eligible_count.set(new UInt8(0));
+    this.message_received.set(new UInt8(0));
   }
 
   events = {
@@ -70,6 +72,10 @@ export class MessageContract extends SmartContract {
     // Deposit message
     const newRoot = MerkleMapMsg.setMessage(senderWitness, msg);
     this.root.set(newRoot);
+
+    // Increment message count
+    const message_received = this.message_received.getAndRequireEquals();
+    this.message_received.set(message_received.add(1));
 
     // Emit event
     this.emitEvent('MessageDepositedEvent', msg);
