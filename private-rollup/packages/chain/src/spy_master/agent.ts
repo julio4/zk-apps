@@ -1,4 +1,4 @@
-import { Bool, Field, Struct } from "o1js";
+import { Bool, Field, PublicKey, Struct, UInt64 as O1UInt64 } from "o1js";
 import { UInt64 } from "@proto-kit/library";
 
 export class AgentId extends UInt64 {}
@@ -49,3 +49,9 @@ export class Agent extends Struct({
     });
   }
 }
+
+export class AgentTxDetails extends Struct({
+  blockHeight: O1UInt64,
+  msgSender: PublicKey,
+  nonce: O1UInt64,
+}) {}

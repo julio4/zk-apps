@@ -1,11 +1,12 @@
 import { Balance } from "@proto-kit/library";
 import { Balances } from "./balances";
-import { SpyMaster } from "./spy_master";
+import { SpyMaster, SpyMasterPrivate } from "./spy_master";
 import { ModulesConfig } from "@proto-kit/common";
 
 export const modules = {
   Balances,
   SpyMaster,
+  SpyMasterPrivate,
 };
 
 export const config: ModulesConfig<typeof modules> = {
@@ -13,6 +14,7 @@ export const config: ModulesConfig<typeof modules> = {
     totalSupply: Balance.from(10_000),
   },
   SpyMaster: {},
+  SpyMasterPrivate: {},
 };
 
 export default {
